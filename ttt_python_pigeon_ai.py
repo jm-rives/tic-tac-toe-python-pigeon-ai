@@ -9,56 +9,7 @@ board = [[1], [2], [3],
 
 game = True
 
-# allow players time to choose heads or tails;
-time.sleep(2)
-
-coin_toss = random.randint(0, 1) % 2
-
-if coin_toss == 0:
-    result = "Heads"
-else:
-    result = "Tails"
-
-# display winner of coin toss
-print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
-playing_X = True
-
-# game engine
-turn = 0
-
-while game == True:
-    display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]} \n{board[6]}|{board[7]}|{board[8]} \n"
-
-    turn += 1
-    if  playing_X == True:
-        print(display_board)
-        move = int(input("Please enter the number where you want your mark:  "))
-
-        # test to see if desired space taken
-        try:
-            # find board coordinates
-            place = board.index([move])
-            board[place] = 'X'
-            playing_X = False
-        except:
-            print("Sorry, that is not a valid move. Check the board and try again.")
-            playing_X = True
-
-    else:
-        print(display_board)
-        move = int(input("Please enter the number where you want your mark:  "))
-        # test to see if desired space taken
-        try:
-            # find board coordinates
-            place = board.index([move])
-            board[place] = 'O'
-
-        except:
-            print("Sorry, that is not a valid move. Check the board and try again.")
-            # function call to move later in game development
-            playing_X = False
-
-        playing_X = True
+num_players = int(input("Please enter the number 1 for single player or the number 2 for two players: "))
 
     # Check for win condition or tie
     if (turn > 8 and game == True):
