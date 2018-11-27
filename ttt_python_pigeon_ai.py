@@ -26,7 +26,11 @@ else:
     result = "Tails"
 
 # display winner of coin toss
-# print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
+if num_players == 1 and result == 'Tails':
+    print(f"The {result} wins! The winner is the 💻 Computer 💻, it will play 'X' and move first")
+else:
+    print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
+
 # playing_X = True
 #
 # # game engine
