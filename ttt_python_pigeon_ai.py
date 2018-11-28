@@ -8,6 +8,7 @@ board = [[1], [2], [3],
             ]
 
 game = True
+computer = True
 
 num_players = int(input("Please enter the number 1 for single player or the number 2 for two players: "))
 
@@ -17,7 +18,7 @@ if num_players == 1:
 else:
     # allow players time to choose heads or tails;
     time.sleep(2)
-
+    computer = False
 coin_toss = random.randint(0, 1) % 2
 
 if coin_toss == 0:
@@ -32,8 +33,8 @@ else:
     print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
 
 # playing_X = True
-#
-# # game engine
+
+# game engine
 # turn = 0
 #
 # while game == True:
