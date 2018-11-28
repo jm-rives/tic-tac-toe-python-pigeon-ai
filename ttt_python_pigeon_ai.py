@@ -32,15 +32,29 @@ if num_players == 1 and result == 'Tails':
 else:
     print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
 
-# playing_X = True
+playing_X = True
 
-# game engine
-# turn = 0
-#
-# while game == True:
-#     display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]} \n{board[6]}|{board[7]}|{board[8]} \n"
-#
-#     turn += 1
+###############
+# game engine #
+###############
+
+turn = 0
+
+while game == True:
+    display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]}\n{board[6]}|{board[7]}|{board[8]}\n"
+
+    turn += 1
+
+#################
+# Computer Play #
+#################
+
+
+
+#####################
+# Two Player Script #
+#####################
+
 #     if  playing_X == True:
 #         print(display_board)
 #         move = int(input("Please enter the number where you want your mark:  "))
@@ -75,6 +89,10 @@ else:
 #     if (turn > 8 and game == True):
 #         print(f"There is a TIE! Well done players! Best two out of three ; )?")
 #         game = False
+#
+###########################
+# Check for Win Condition #
+###########################
 #
 #     if turn > 3:
 #     # rows
