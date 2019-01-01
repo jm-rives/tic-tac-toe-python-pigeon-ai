@@ -8,12 +8,6 @@ board = [[1], [2], [3],
             [7], [8], [9]
             ]
 
-# testing board
-# board = [[1], ['O'], ['X'],
-#             ['O'], ['X'], ['O'],
-#             ['O'], ['X'], ['O']
-#             ]
-
 game = True
 computer = True
 
@@ -29,14 +23,12 @@ else:
 coin_toss = random.randint(0, 1) % 2
 
 
-# commented out for testing
+if coin_toss == 0:
+    result = "Heads"
+else:
+    result = "Tails"
 
-# if coin_toss == 0:
-#     result = "Heads"
-# else:
-#     result = "Tails"
-
-result = 'Tails' # delete line before and uncomment above before submitting
+# result = 'Tails' # delete line before and uncomment above before submitting
 
 # display winner of coin toss
 if num_players == 1 and result == 'Tails':
@@ -61,7 +53,7 @@ while game == True:
     turn += 1
     display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]}\n{board[6]}|{board[7]}|{board[8]}\n"
 
-    #################
+#################
 # Computer Play #
 #################
 
@@ -108,103 +100,104 @@ while game == True:
             computer_turn = False
 
 
-    # game = False
 
-######################
-## Two Player Script #
-######################
 
-#     if  playing_X == True:
-#         print(display_board)
-#         move = int(input("Please enter the number where you want your mark:  "))
-#
-#         # test to see if desired space taken
-#         try:
-#             # find board coordinates
-#             place = board.index([move])
-#             board[place] = 'X'
-#             playing_X = False
-#         except:
-#             print("Sorry, that is not a valid move. Check the board and try again.")
-#             playing_X = True
-#
-#     else:
-#         print(display_board)
-#         move = int(input("Please enter the number where you want your mark:  "))
-#         # test to see if desired space taken
-#         try:
-#             # find board coordinates
-#             place = board.index([move])
-#             board[place] = 'O'
-#
-#         except:
-#             print("Sorry, that is not a valid move. Check the board and try again.")
-#             # function call to move later in game development
-#             playing_X = False
-#
-#         playing_X = True
-#
-########################
-## Check Tie Condition #
-########################
-#
-#     if (turn > 8 and game == True):
-#         print(f"There is a TIE! Well done players! Best two out of three ; )?")
-#         game = False
-#
-############################
-## Check for Win Condition #
-############################
-#
-#     if turn > 3:
-#     # rows
-#         if board[0] == board[1] and board[1] == board[2]:
-#
-#             print(f"Player {board[0]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#
-#         elif board[3] == board[4] and board[4] == board[5]:
-#
-#             print(f"Player {board[3]} is the WINNER! ")
-#             print(display_board)
-#             game = False
-#
-#         elif board[6] == board[7] and board[7] == board[8]:
-#
-#             print(f"Player {board[0]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#     # columns
-#         elif board[0] == board[3] and board[3] == board[6]:
-#
-#             print(f"Player {board[0]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#
-#         elif board[1] == board[4] and board[4] == board[7]:
-#
-#             print(f"Player {board[1]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#         elif board[2] == board[5] and board[5] == board[8]:
-#
-#             print(f"Player {board[2]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#     # diagonal
-#         elif board[0] == board[4] and board[4] == board[8]:
-#
-#             print(f"Player {board[0]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#
-#         elif board[2] == board[4] and board[4] == board[6]:
-#
-#             print(f"Player {board[2]} is the WINNER!")
-#             print(display_board)
-#             game = False
-#         else:
-#             continue
+#####################
+# Two Player Script #
+#####################
+    if num_players == 2:
+
+        if  playing_X == True:
+            print(display_board)
+            move = int(input("Please enter the number where you want your mark:  "))
+
+            # test to see if desired space taken
+            try:
+                # find board coordinates
+                place = board.index([move])
+                board[place] = 'X'
+                playing_X = False
+            except:
+                print("Sorry, that is not a valid move. Check the board and try again.")
+                playing_X = True
+
+        else:
+            print(display_board)
+            move = int(input("Please enter the number where you want your mark:  "))
+            # test to see if desired space taken
+            try:
+                # find board coordinates
+                place = board.index([move])
+                board[place] = 'O'
+
+            except:
+                print("Sorry, that is not a valid move. Check the board and try again.")
+                # function call to move later in game development
+                playing_X = False
+
+            playing_X = True
+
+#######################
+# Check Tie Condition #
+#######################
+
+    if (turn > 8 and game == True):
+        print(f"There is a TIE! Well done players! Best two out of three ; )?")
+        game = False
+
+###########################
+# Check for Win Condition #
+###########################
+
+    if turn > 3:
+    # rows
+        if board[0] == board[1] and board[1] == board[2]:
+
+            print(f"Player {board[0]} is the WINNER!")
+            print(display_board)
+            game = False
+
+        elif board[3] == board[4] and board[4] == board[5]:
+
+            print(f"Player {board[3]} is the WINNER! ")
+            print(display_board)
+            game = False
+
+        elif board[6] == board[7] and board[7] == board[8]:
+
+            print(f"Player {board[0]} is the WINNER!")
+            print(display_board)
+            game = False
+    # columns
+        elif board[0] == board[3] and board[3] == board[6]:
+
+            print(f"Player {board[0]} is the WINNER!")
+            print(display_board)
+            game = False
+
+        elif board[1] == board[4] and board[4] == board[7]:
+
+            print(f"Player {board[1]} is the WINNER!")
+            print(display_board)
+            game = False
+        elif board[2] == board[5] and board[5] == board[8]:
+
+            print(f"Player {board[2]} is the WINNER!")
+            print(display_board)
+            game = False
+    # diagonal
+        elif board[0] == board[4] and board[4] == board[8]:
+
+            print(f"Player {board[0]} is the WINNER!")
+            print(display_board)
+            game = False
+
+        elif board[2] == board[4] and board[4] == board[6]:
+
+            print(f"Player {board[2]} is the WINNER!")
+            print(display_board)
+            game = False
+        else:
+            continue
 
 
