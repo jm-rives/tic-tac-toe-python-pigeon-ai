@@ -2,18 +2,25 @@ import random
 import time
 
 # game board
+
 board = [[1], [2], [3],
             [4], [5], [6],
             [7], [8], [9]
             ]
 
+# testing board
+# board = [[1], ['O'], ['X'],
+#             ['O'], ['X'], ['O'],
+#             ['O'], ['X'], ['O']
+#             ]
+
 game = True
 computer = True
 
-num_players = int(input("Please enter the number 1 for single player or the number 2 for two players: "))
+num_players = int(input("Please enter the number 1 for single player or the number 2 for two players: \n"))
 
 if num_players == 1:
-    print("It's time for a coin toss. Player, you are 'heads'. ")
+    print("It's time for a coin toss. Player, you are 'heads'. \n")
 
 else:
     # allow players time to choose heads or tails;
@@ -21,39 +28,88 @@ else:
     computer = False
 coin_toss = random.randint(0, 1) % 2
 
-if coin_toss == 0:
-    result = "Heads"
-else:
-    result = "Tails"
+
+# commented out for testing
+
+# if coin_toss == 0:
+#     result = "Heads"
+# else:
+#     result = "Tails"
+
+result = 'Tails' # delete line before and uncomment above before submitting
 
 # display winner of coin toss
 if num_players == 1 and result == 'Tails':
-    print(f"The {result} wins! The winner is the 💻 Computer 💻, it will play 'X' and move first")
+    computer_playing_X = True
+    computer_turn = True
+    print(f"The {result} wins! The winner is the 💻 Computer 💻, it will play 'X' and move first\n")
 else:
-    print(f"The {result} wins! The winner is Player One, they will play 'X' and move first")
-
-playing_X = True
+    computer_playing_X = False
+    computer_turn = False
+    print(f"The {result} wins! The winner is Player One, they will play 'X' and move first\n")
 
 ###############
 # game engine #
 ###############
 
+# Turn Tracker
+playing_X = True # for two person play
 turn = 0
 
 while game == True:
-    display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]}\n{board[6]}|{board[7]}|{board[8]}\n"
 
     turn += 1
+    display_board = f"{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]}\n{board[6]}|{board[7]}|{board[8]}\n"
 
-#################
+    #################
 # Computer Play #
 #################
 
 
+    if computer_turn == True and computer_playing_X:
+        available_list = []
+        for item in board:
+            if item[0] != 'X' and item[0] != 'O':
+                available_list.append(item[0])
+        print(available_list)
+        move = random.sample(available_list, 1)
+        print(move[0])
 
-#####################
-# Two Player Script #
-#####################
+        print("The computer is playing")
+        try:
+
+            # find board coordinates
+            place = board.index([(move[0])])
+            board[place] = 'X'
+            print(display_board)
+
+            computer_turn = False
+        except:
+            print("Invalid move: Computer.")
+            computer_turn = True
+
+
+
+    else:
+        print("The computer is NOT playing")
+        print(display_board)
+        move = int(input("Please enter the number where you want your mark:  "))
+        # test to see if desired space taken
+        try:
+            # find board coordinates
+            place = board.index([move])
+            board[place] = 'O'
+            computer_turn = True
+        except:
+            print("Sorry, that is not a valid move. Check the board and try again.")
+            computer_turn = False
+
+
+    game = False
+
+######################
+## Two Player Script #
+######################
 
 #     if  playing_X == True:
 #         print(display_board)
@@ -85,14 +141,17 @@ while game == True:
 #
 #         playing_X = True
 #
-#     # Check for win condition or tie
+########################
+## Check Tie Condition #
+########################
+#
 #     if (turn > 8 and game == True):
 #         print(f"There is a TIE! Well done players! Best two out of three ; )?")
 #         game = False
 #
-###########################
-# Check for Win Condition #
-###########################
+############################
+## Check for Win Condition #
+############################
 #
 #     if turn > 3:
 #     # rows
