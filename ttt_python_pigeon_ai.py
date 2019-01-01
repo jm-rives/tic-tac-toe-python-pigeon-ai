@@ -67,11 +67,14 @@ while game == True:
 
 
     if computer_turn == True and computer_playing_X:
+        # create an empty list to track available spots
         available_list = []
         for item in board:
+            # why did I use '0' instead of i?
             if item[0] != 'X' and item[0] != 'O':
                 available_list.append(item[0])
         print(available_list)
+        # a computer move is selected randomly from the list of available moves
         move = random.sample(available_list, 1)
         print(move[0])
 
@@ -105,7 +108,7 @@ while game == True:
             computer_turn = False
 
 
-    game = False
+    # game = False
 
 ######################
 ## Two Player Script #
